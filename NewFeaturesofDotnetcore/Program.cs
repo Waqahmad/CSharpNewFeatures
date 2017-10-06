@@ -117,10 +117,75 @@ namespace NewFeaturesofDotnetcore
             //public string this[int index] => words [index];
 
             //public string this[int intx] => words[intx];
+
+            //Constants
+            //A constant is a static field whose value can never change.
+
+            public const string Message = "I am breliant guy";
+
+            //Static Constructor
+
+             /*  A static constructor executes once per type, rather than once per instance. A type
+                can define only one static constructor, and it must be parameterless and have the
+                same name as the type:
+             */
+
+            static Sentence()
+            {
+                Console.WriteLine("Type Initialized");
+            }
+            //static Sentence(int a) => a;
+
+        }
+        //Partial methods
+        /*
+         * A partial method consists of two parts: a definition and an implementation. The definition
+         is typically written by a code generator, and the implementation is typically
+         manually authored. If an implementation is not provided, the definition of the partial
+         method is compiled away (as is the code that calls it). This allows auto-generated
+         code to be liberal in providing hooks, without having to worry about bloat. Partial
+         methods must be void and are implicitly private.
+         Partial methods were introduced in C# 3.0.
+         */
+        //Rules for Partial Methods
+
+        //Partial methods are indicated by the partial modifier.
+        //Partial methods must be private.
+        //Partial methods must return void.
+        //Partial methods must only be declared within partial classes.
+        //Partial methods do not always have an implementation.
+        //Partial methods can be static and generic.
+        //Partial methods can have arguments including ref but not out. 
+        //You cannot make a delegate to a partial method.
+
+
+        public partial class PaymentForm
+        {
+            //Parial Methods are private , by default
+            //Partial Defination
+           partial void ValidatePayment(decimal Amount);
+           
         }
 
+      public partial class PaymentForm
+        {
 
+            //Partial Implimentation
+            partial void ValidatePayment(decimal Amount)
+            {
+               if(Amount>200)
+                {
 
+                }
+            }
+            //You can call a partial method inside the constructor where the method is defined.
+            public void CallParialMethod()
+            {
+                ValidatePayment(56);
+            }
+        }
+
+       
 
         static void Main(string[] args)
         {
@@ -133,8 +198,14 @@ namespace NewFeaturesofDotnetcore
             //Object Initializers Versus Optional Parameters
             Student _std3 = new Student("Waqar", 32, p: true);
 
+            PaymentForm obj = new PaymentForm();
+            obj.CallParialMethod();
 
-            Student std = new Student();
+
+
+
+
+              Student std = new Student();
             std.StudentMarks = 565;
             std.StudentName = "Ahmad";
 
