@@ -1,4 +1,7 @@
 ﻿using System;
+using Newtonsoft.Json;
+using System.IO;
+using System.Collections.Generic;
 
 namespace NewFeaturesofDotnetcore
 {
@@ -19,7 +22,7 @@ namespace NewFeaturesofDotnetcore
         {
             public string StudentName;
             public int StudentMarks;
-            public char Gender;
+            public string  Gender;
             public bool Promoted;
             public Student() { }
             //This is called Expression-bodied methods (C# 6)
@@ -28,7 +31,7 @@ namespace NewFeaturesofDotnetcore
             public Student(string name, int marks) : this(name) => StudentMarks = marks;
 
             //Object Initializers Versus Optional Parameters, here G and P are optional Parameter
-            public Student(string name, int marks, char G='M', bool p=false) : this(name, marks)
+            public Student(string name, int marks, string  G="M", bool p=false) : this(name, marks)
             {
                 Gender = G;
                 Promoted = p;
@@ -189,8 +192,18 @@ namespace NewFeaturesofDotnetcore
 
         static void Main(string[] args)
         {
+
+            string jsonstring = File.ReadAllText("person.json");
+            Student std_json = JsonConvert.DeserializeObject<Student>(jsonstring);
+            Console.WriteLine(std_json);
+
+
             //// Note parameterless constructors can omit empty parentheses
             Student _stud = new Student { StudentName = "Waqar", StudentMarks = 585 };
+
+            string outputjson = JsonConvert.SerializeObject(_stud);
+            File.WriteAllText("person.json", outputjson);
+
 
             //Using object initializers, you can instantiate Bunny objects as follows:
             Student _std2 = new Student("Waqar") { StudentMarks = 45 };
