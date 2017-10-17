@@ -5,3 +5,11 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+@foreach (var std in (List<string>)ViewData["Students"])
+{
+	<li>
+		@std
+	</li>
+
+}

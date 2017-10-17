@@ -29,3 +29,21 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+
+@*<ul>
+	@foreach (var student in ViewBag.Student)
+	{ 
+	<li> @student</li>
+	 } 
+</ul>*@ 
+
+<ul>
+	@foreach (var item in  ViewData["Student"] as List<string>  )
+	{
+		<li>
+			@item
+		</li>
+	}
+
+</ul>

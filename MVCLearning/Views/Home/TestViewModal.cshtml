@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MVCLearning.Controllers.HomeController.Product>
+	
+@{
+    ViewBag.Title = "TestViewModal";
+}
+
+<h2>TestViewModal</h2>
+
+@foreach (var item in Model)
+{
+	<li>
+	<span>ID</span>	@item.Id <span>Name</span> @item.Name <span>Available</span> @item.Available
+	</li>
+}
