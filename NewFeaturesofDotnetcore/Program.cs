@@ -188,10 +188,33 @@ namespace NewFeaturesofDotnetcore
             }
         }
 
-       
+        //value type and Reference Type
+        //Value types
+        public struct Point { public int X, Y; }
 
+        public class Point_Cls { public int X, Y; }
         static void Main(string[] args)
         {
+
+            Point p1 = new Point();
+            p1.X = 7;
+            Point p2 = p1; // Assignment causes copy
+            Console.WriteLine(p1.X); // 7
+            Console.WriteLine(p2.X); // 7
+            p1.X = 9; // Change p1.X
+            Console.WriteLine(p1.X); // 9
+            Console.WriteLine(p2.X); // 7
+
+
+            Point_Cls p1x = new Point_Cls();
+            p1x.X = 7;
+            Point_Cls p2x = p1x; // Copies p1 reference
+            Console.WriteLine(p1x.X); // 7
+            Console.WriteLine(p2x.X); // 7
+            p1x.X = 9; // Change p1.X
+            Console.WriteLine(p1x.X); // 9
+            Console.WriteLine(p2x.X); // 9
+
 
             string jsonstring = File.ReadAllText("person.json");
             Student std_json = JsonConvert.DeserializeObject<Student>(jsonstring);
