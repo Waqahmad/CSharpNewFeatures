@@ -8,6 +8,7 @@ namespace NewFeaturesofDotnetcore
     class Program
     {
 
+
         //Expression-bodied Methods
         int foo1 (int x)
         {
