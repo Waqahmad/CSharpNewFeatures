@@ -126,20 +126,3 @@ namespace AdvanceFeatureCSharp
 }
 
 
-using System;
-
-public delegate void Print(int value);
-
-public class Program
-{
-    public static void PrintHelperMethod(Print printDel, int val)
-    {
-        val += 10;
-        printDel(val);
-    }
-
-    public static void Main(string[] args)
-    {
-        PrintHelperMethod(delegate (int val) { Console.WriteLine("Anonymous method: {0}", val); }, 100);
-    }
-}
